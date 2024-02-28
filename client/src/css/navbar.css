@@ -1,0 +1,50 @@
+.nav {
+    height: 100%;
+    width: 80px;
+    border: 1px solid var(--trazo);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--fondo-normal);
+    position: relative;
+}
+
+.nav__logo {
+    width: auto;
+    height: auto;
+    position:absolute;
+    top: 15px;
+}
+
+.nav__item {
+    list-style-type: none;
+}
+
+.nav__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav__link, .nav__link--selected {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--fondoNormal);
+    height: 40px;
+    width: 40px;
+    border-radius: 12px;
+    color: var(--fuenteNormal);
+}
+
+.nav__link--selected {
+    background-color: var(--colorMenu);
+}
+
+.nav__icon {
+    width: 40px;
+    height: 40px;
+}
