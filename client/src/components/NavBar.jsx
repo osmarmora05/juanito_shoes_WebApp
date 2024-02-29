@@ -17,11 +17,13 @@ function NavBar() {
     admin: false, // administrador
   };
 
-  // const [selectedOption, setSelectedOption] = useState("catalogo-nav");
-
   const [selectedOption, setSelectedOption] = useState(
     roles.grocer || roles.admin ? "catalogo-nav" : "facturacion-nav"
   );
+
+  const noRolesOrAllFals =
+    (roles.grocer === null && roles.admin === null && roles.cashier === null) ||
+    (roles.grocer == false && roles.admin == false && roles.cashier == false);
 
   const handleRadioChange = (option) => {
     setSelectedOption(option);
@@ -36,14 +38,7 @@ function NavBar() {
       />
 
       <ul className="nav__list">
-        {(roles.grocer ||
-          roles.admin ||
-          (roles.grocer === null &&
-            roles.admin === null &&
-            roles.cashier === null) ||
-          (roles.grocer == false &&
-            roles.admin == false &&
-            roles.cashier == false)) && (
+        {(roles.grocer || roles.admin || noRolesOrAllFals) && (
           <NavItem
             to={"*"}
             option={"catalogo-nav"}
@@ -52,14 +47,7 @@ function NavBar() {
             icon={<CatalogoIcon />}
           />
         )}
-        {(roles.grocer ||
-          roles.admin ||
-          (roles.grocer === null &&
-            roles.admin === null &&
-            roles.cashier === null) ||
-          (roles.grocer == false &&
-            roles.admin == false &&
-            roles.cashier == false)) && (
+        {(roles.grocer || roles.admin || noRolesOrAllFals) && (
           <NavItem
             to={"/"}
             option={"entradas-nav"}
@@ -69,14 +57,7 @@ function NavBar() {
           />
         )}
 
-        {(roles.cashier ||
-          roles.admin ||
-          (roles.grocer === null &&
-            roles.admin === null &&
-            roles.cashier === null) ||
-          (roles.grocer == false &&
-            roles.admin == false &&
-            roles.cashier == false)) && (
+        {(roles.cashier || roles.admin || noRolesOrAllFals) && (
           <NavItem
             to={"*"}
             option={"facturacion-nav"}
@@ -86,14 +67,7 @@ function NavBar() {
           />
         )}
 
-        {(roles.cashier ||
-          roles.admin ||
-          (roles.grocer === null &&
-            roles.admin === null &&
-            roles.cashier === null) ||
-          (roles.grocer == false &&
-            roles.admin == false &&
-            roles.cashier == false)) && (
+        {(roles.cashier || roles.admin || noRolesOrAllFals) && (
           <NavItem
             to={"*"}
             option={"pedidos-nav"}
@@ -103,13 +77,7 @@ function NavBar() {
           />
         )}
 
-        {(roles.admin ||
-          (roles.grocer === null &&
-            roles.admin === null &&
-            roles.cashier === null) ||
-          (roles.grocer == false &&
-            roles.admin == false &&
-            roles.cashier == false)) && (
+        {(roles.admin || noRolesOrAllFals) && (
           <NavItem
             to={"*"}
             option={"usuarios-nav"}
@@ -119,13 +87,7 @@ function NavBar() {
           />
         )}
 
-        {(roles.admin ||
-          (roles.grocer === null &&
-            roles.admin === null &&
-            roles.cashier === null) ||
-          (roles.grocer == false &&
-            roles.admin == false &&
-            roles.cashier == false)) && (
+        {(roles.admin || noRolesOrAllFals) && (
           <NavItem
             to={"*"}
             option={"reportes-nav"}
