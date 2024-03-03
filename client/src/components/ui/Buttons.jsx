@@ -3,7 +3,13 @@ import { CloseIcon } from "./Icons";
 
 export function PrimaryButton({ text, handleOnClick, type="button" }) {
   return (
-    <button className="primary-btn" onClick={() => handleOnClick} type={type}>
+    <button
+      className="primary-btn"
+      onClick={() => {
+        handleOnClick;
+      }}
+      type={type}
+    >
       {text}
     </button>
   );
@@ -11,13 +17,7 @@ export function PrimaryButton({ text, handleOnClick, type="button" }) {
 
 export function SecondaryButton({ text, handleOnClick, type="button" }) {
   return (
-    <button
-      className="secondary-btn"
-      onClick={() => {
-        handleOnClick;
-      }}
-      type={type}
-    >
+    <button className="secondary-btn" onClick={() => handleOnClick} type={type}>
       {text}
     </button>
   );

@@ -1,4 +1,4 @@
-.primary-btn, .secondary-btn {
+.secondary-btn, .primary-btn{
     border-radius: calc(0.5rem - 2px);
     padding: 0.5rem 1rem 0.5rem 1rem;
     font-size: var(--text-fontSize);
@@ -9,17 +9,17 @@
     transition-duration: .15s;
 }
 
-.primary-btn {
+.secondary-btn {
     background-color: var(--fondoBotonPrimario);
     color: var(--fuenteBotonPrimario);
     border: none;
 }
 
-.primary-btn:hover, .secondary-btn:hover {
+.secondary-btn:hover, .secondary-btn:hover {
     opacity: .9;
 }
 
-.secondary-btn {
+.primary-btn {
     background-color: var(--fondoBotonSecundario);
     color: var(--fuenteBotonSecundario);
     border: 1px solid var(--fuenteBotonSecundario);
