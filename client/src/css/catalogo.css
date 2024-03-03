@@ -1,0 +1,10 @@
+.catalogo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 18px;
+}
+
+.catalogo__box {
+    min-width: 95%;
+}
