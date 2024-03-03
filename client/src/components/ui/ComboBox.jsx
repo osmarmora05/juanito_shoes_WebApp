@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "../../css/combobox.css";
 
-function ComboBox({ title, values }) {
+function ComboBox({ title, values = null }) {
   // values = [
   //     {
   //         text: "hola",
@@ -20,14 +20,27 @@ function ComboBox({ title, values }) {
         value={value}
         onChange={(e) => setValues(e.target.value)}
       >
-        <option value="" disabled>
-          Seleccione una opción
-        </option>
-        {values.map((item, index) => (
-          <option className="combobox__option" value={item.value} key={index}>
-            {item.text}
+        {values === null || values.length === 0 ? (
+          <option value="" disabled>
+            Vaya! Parace que no hay un producto
           </option>
-        ))}
+        ) : (
+          <>
+            <option value="" disabled>
+              Seleccione una opción
+            </option>
+            {(values.length != 0 || values != null) &&
+              values.map((item, index) => (
+                <option
+                  className="combobox__option"
+                  value={item.value}
+                  key={index}
+                >
+                  {item.text}
+                </option>
+              ))}
+          </>
+        )}
       </select>
     </>
   );

@@ -2,14 +2,23 @@ import { useState } from "react";
 import { CheckIcon } from "./Icons";
 import "../../css/selectcolor.css";
 
-function SelectColor({ title, values }) {
-  // const values = [
-  //     {
-  //         name: "red",
-  //         color: "#f00" -- hex
-  //     }
-  // ]
+const defaultValues = [
+  {
+      name: "red",
+      color: "#f00" // hex
+  },
+  {
+    name: "green",
+    color: "#0f0"
+  },
+  {
+      name: "blue",
+      color: "#00f"
+  }
+];
 
+
+function SelectColor({ title, values = defaultValues }) {
   const [selectedOption, setSelectedOption] = useState("");
 
   const handleSelectedOption = (option) => {
@@ -21,7 +30,7 @@ function SelectColor({ title, values }) {
       <label className="pallette__title">{title}</label>
       <div className="pallette__box">
         {values.map((item, index) => (
-          <button
+          <button type="button"
             className="pallette__outline"
             key={index}
             style={{
@@ -29,7 +38,6 @@ function SelectColor({ title, values }) {
                 selectedOption === item.name
                   ? `1px solid ${item.color}`
                   : "none",
-                // backgroundColor: item.color
             }}
             onClick={() => handleSelectedOption(item.name)}
           >

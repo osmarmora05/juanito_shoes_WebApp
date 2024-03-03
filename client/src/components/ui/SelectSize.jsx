@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "../../css/selectsize.css";
 
-function SelectSize({ title, values }) {
-  // values = [1,2,3,4,5,6]
+const defaultValues = [1,2,3,4,5,6]
 
+function SelectSize({ title, values = defaultValues }) {
   const [selectedOption, setSelectedOption] = useState("");
 
   const handleSelectedOption = (option) => {
