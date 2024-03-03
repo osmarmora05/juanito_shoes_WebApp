@@ -11,7 +11,7 @@ function App() {
       <NavBar />
       <div className="app__pages">
       <Routes>
-        <Route path="/" element={<Catalogo />} />
+        <Route path="catalogo" element={<Catalogo />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       </div>

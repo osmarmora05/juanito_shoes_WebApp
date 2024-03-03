@@ -40,7 +40,7 @@ function NavBar() {
       <ul className="nav__list">
         {(roles.grocer || roles.admin || noRolesOrAllFals) && (
           <NavItem
-            to={"*"}
+            to={"catalogo"}
             option={"catalogo-nav"}
             selectedOption={selectedOption}
             onClick={() => handleRadioChange("catalogo-nav")}
