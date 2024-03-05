@@ -15,6 +15,10 @@
     font-size: var(--text-fontSize);
 }
 
+.textarea__input {
+    height: 110px;
+}
+
 .textbox__input {
     height: 2.25rem;
 }

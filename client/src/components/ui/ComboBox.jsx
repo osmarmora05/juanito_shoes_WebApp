@@ -1,15 +1,20 @@
 import { useState } from "react";
 import "../../css/combobox.css";
 
-function ComboBox({ title, values = null }) {
-  // values = [
-  //     {
-  //         text: "hola",
-  //         value: "saludo"
-  //     }
-  // ]
+function ComboBox({ title, values = null, setFieldValue, fieldValue }) {
+  values = [
+      {
+          text: "hola",
+          value: "saludo"
+      }
+  ]
 
   const [value, setValues] = useState("");
+
+  const handleSelectCategoria = (e) => {
+    setValues(e.target.value);
+    setFieldValue(fieldValue, e.target.value);
+  };
 
   return (
     <>
@@ -18,7 +23,7 @@ function ComboBox({ title, values = null }) {
       <select
         className="combobox__select"
         value={value}
-        onChange={(e) => setValues(e.target.value)}
+        onChange={(e) => handleSelectCategoria(e)}
       >
         {values === null || values.length === 0 ? (
           <option value="" disabled>
@@ -35,6 +40,9 @@ function ComboBox({ title, values = null }) {
                   className="combobox__option"
                   value={item.value}
                   key={index}
+                  onClick={() => {
+                    handleSelectCategoria(item.value);
+                  }}
                 >
                   {item.text}
                 </option>

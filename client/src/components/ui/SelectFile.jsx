@@ -3,31 +3,37 @@ import { useDropzone } from "react-dropzone";
 import "../../css/selectfiles.css";
 import { CloseButton } from "./Buttons";
 
-export default function SelectFile() {
+export default function SelectFile({ setFieldValue, fieldValue }) {
   const [file, setFile] = useState(null);
 
-  const onDrop = useCallback((acceptedFiles) => {
-    const imageFiles = acceptedFiles.filter((file) =>
-      file.type.startsWith("image/")
-    );
+  const onDrop = useCallback(
+    (acceptedFiles) => {
+      const imageFiles = acceptedFiles.filter((file) =>
+        file.type.startsWith("image/")
+      );
 
-    if (imageFiles.length == 0) {
-      acceptedFiles[0] = null;
-      return;
-    }
+      if (imageFiles.length == 0) {
+        acceptedFiles[0] = null;
+        return;
+      }
 
-    setFile(acceptedFiles[0]);
-  }, []);
+      setFile(acceptedFiles[0]);
+      setFieldValue(fieldValue, acceptedFiles[0]);
+    },
+    [setFieldValue]
+  );
 
-  //   useEffect(() => {
-  //     console.log(file);
-  //   }, [file]);
+  // useEffect(() => {
+  //   console.log(file);
+
+  // }, [file]);
 
   const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
     useDropzone({ onDrop });
 
   const handleImageFiles = () => {
     setFile(null);
+    setFieldValue(fieldValue, null);
   };
 
   return (
