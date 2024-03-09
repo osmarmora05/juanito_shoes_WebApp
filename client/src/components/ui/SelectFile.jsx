@@ -1,9 +1,9 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState,useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import "../../css/selectfiles.css";
 import { CloseButton } from "./Buttons";
 
-export default function SelectFile({ setFieldValue, fieldValue }) {
+export default function SelectFile({ setFieldValue, fieldValue, value }) {
   const [file, setFile] = useState(null);
 
   const onDrop = useCallback(
@@ -23,10 +23,9 @@ export default function SelectFile({ setFieldValue, fieldValue }) {
     [setFieldValue]
   );
 
-  // useEffect(() => {
-  //   console.log(file);
-
-  // }, [file]);
+  useEffect(() => {
+    setFile(value)
+  }, [value]);
 
   const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
     useDropzone({ onDrop });
@@ -43,7 +42,7 @@ export default function SelectFile({ setFieldValue, fieldValue }) {
           <input {...getInputProps()} />
           {file === null && (
             <p>
-              Arrastre y suelte una imagen o haga clic para seleccionar imagen
+              Arrastre o suelte una imagen o haga clic para seleccionar imagen
             </p>
           )}
         </div>

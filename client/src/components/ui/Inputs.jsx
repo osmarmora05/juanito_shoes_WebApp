@@ -1,6 +1,6 @@
 import "../../css/inputs.css";
 
-export function TextBox({ title, name, placeHolder, handleOnchange }) {
+export function TextBox({ title, name, placeHolder, handleOnchange, value }) {
   return (
     <>
       <label className="textbox__label">{title}</label>
@@ -10,12 +10,13 @@ export function TextBox({ title, name, placeHolder, handleOnchange }) {
         name={name}
         placeholder={placeHolder}
         onChange={handleOnchange}
+        value={value}
       />
     </>
   );
 }
 
-export function TextArea({ title, name, placeHolder, handleOnchange }) {
+export function TextArea({ title, name, placeHolder, handleOnchange, value }) {
   return (
     <>
       <label className="textarea__label">{title}</label>
@@ -25,6 +26,7 @@ export function TextArea({ title, name, placeHolder, handleOnchange }) {
         name={name}
         placeholder={placeHolder}
         onChange={handleOnchange}
+        value={value}
       />
     </>
   );

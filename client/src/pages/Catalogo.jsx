@@ -8,13 +8,19 @@ import SelectFile from "../components/ui/SelectFile";
 import { Form, Formik } from "formik";
 import { Toaster, toast } from "sonner";
 import "../css/catalogo.css";
+import { useState } from "react";
+import DialogForm from "../components/ui/DialogForm";
+import AddCategories from "../components/AddCategories";
 
 export function Catalogo() {
+  
+  const [showForm,setShowForm] = useState(false)
+
   return (
     <section className="catalogo">
       <ScreenHeader
         title="Catalogo"
-        description="Ingreso de entrada de mercaderia"
+        description="Ingreso de entrada de mercadería"
       />
 
       <Formik
@@ -22,12 +28,12 @@ export function Catalogo() {
           nombre: "",
           modelo: "",
           categoria: "",
-          color: "",
           size: "",
+          color: "",
           descripcion: "",
           file: null,
         }}
-        onSubmit={(values) => {
+        onSubmit={(values, actions) => {
           if (
             values.nombre.length == 0 &&
             values.modelo.length == 0 &&
@@ -48,25 +54,25 @@ export function Catalogo() {
             if (values[property] == null || values[property].length == 0) {
               if (property == "size") {
                 toast.error("Ups! Se te paso por alto llenar el campo Tamaño");
-                return
+                return;
               } else if (property == "file") {
                 toast.error("Ups! Se te paso por alto llenar el campo Imagen");
-                return
+                return;
               } else {
                 const unfilledField =
                   property.charAt(0).toUpperCase() + property.slice(1);
-                console.log(typeof property);
-                toast.error(
-                  "Ups! Se te paso por alto llenar el campo " + unfilledField
-                );
-                return
+                toast.error("Ups! Se te paso por alto llenar el campo " + unfilledField);
+                return;
               }
             }
           }
-          toast.success("Todo correcto")
+
+          toast.success("Todo correcto");
+          console.log(values);
+          actions.resetForm();
         }}
       >
-        {({ handleChange, handleSubmit, setFieldValue }) => (
+        {({ handleChange, handleSubmit, setFieldValue, values, resetForm }) => (
           <Form className="catalogo__box" onSubmit={handleSubmit}>
             <div className="catalogo__content">
               <div className="catalogo__columns">
@@ -77,6 +83,7 @@ export function Catalogo() {
                     placeHolder={"Ingrese el nombre"}
                     name={"nombre"}
                     handleOnchange={handleChange}
+                    value={values.nombre}
                   />
                 </div>
 
@@ -87,6 +94,7 @@ export function Catalogo() {
                       placeHolder={"Ingrese el modelo"}
                       name={"modelo"}
                       handleOnchange={handleChange}
+                      value={values.modelo}
                     />
                   </div>
 
@@ -97,9 +105,13 @@ export function Catalogo() {
                           title={"Categoria"}
                           setFieldValue={setFieldValue}
                           fieldValue={"categoria"}
+                          value={values.categoria}
                         />
                       </div>
-                      <SecondaryButton text={"Agregar"} />
+                      <SecondaryButton text={"Agregar"} handleOnClick={()=>{
+                        setShowForm(true)
+                        console.log("Estamos mostrando el formulario " + showForm)
+                      }} />
                     </div>
                   </div>
                 </div>
@@ -107,28 +119,26 @@ export function Catalogo() {
                 {/* Segunda columna */}
 
                 <div>
-                  <div className="catalog__with-buttons">
-                    <div>
-                      <SelectColor
-                        title={"Color"}
-                        setFieldValue={setFieldValue}
-                        fieldValue={"color"}
-                      />
-                    </div>
-                    <SecondaryButton text={"Agregar"} />
-                  </div>
-                </div>
-
-                <div>
-                  <div className="catalog__with-buttons">
+                  <div>
                     <div>
                       <SelectSize
                         title={"Tamaños(uk)"}
                         setFieldValue={setFieldValue}
                         fieldValue={"size"}
+                        value={values.size}
                       />
                     </div>
-                    <SecondaryButton text={"Agregar"} />
+                  </div>
+
+                  <div>
+                    <div>
+                      <SelectColor
+                        title={"Color"}
+                        setFieldValue={setFieldValue}
+                        fieldValue={"color"}
+                        value={values.color}
+                      />
+                    </div>
                   </div>
                 </div>
 
@@ -136,10 +146,11 @@ export function Catalogo() {
 
                 <div>
                   <TextArea
-                    title={"Descripcion"}
-                    placeHolder={"Ingrese la descripcion"}
+                    title={"Descripción"}
+                    placeHolder={"Ingrese la descripción"}
                     name={"descripcion"}
                     handleOnchange={handleChange}
+                    value={values.descripcion}
                   />
                 </div>
 
@@ -155,19 +166,23 @@ export function Catalogo() {
                     <SelectFile
                       setFieldValue={setFieldValue}
                       fieldValue={"file"}
+                      value={values.file}
                     />
                   </div>
                 </div>
               </div>
             </div>
             <footer className="catalogo__footer">
-              <SecondaryButton text={"Cancelar"} />
+              <SecondaryButton text={"Cancelar"} handleOnClick={()=>{
+                resetForm()
+                toast.success("Limpiado los campos")
+              }} />
               <PrimaryButton text={"Aceptar"} type="submit" />
             </footer>
           </Form>
         )}
       </Formik>
-
+      {showForm && <DialogForm content={<AddCategories/>} setShowForm={setShowForm}/>}
       <Toaster />
     </section>
   );

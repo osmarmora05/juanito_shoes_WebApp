@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "../../css/combobox.css";
 
-function ComboBox({ title, values = null, setFieldValue, fieldValue }) {
+function ComboBox({ title, values = null, value, setFieldValue, fieldValue }) {
   values = [
       {
           text: "hola",
@@ -9,10 +9,7 @@ function ComboBox({ title, values = null, setFieldValue, fieldValue }) {
       }
   ]
 
-  const [value, setValues] = useState("");
-
   const handleSelectCategoria = (e) => {
-    setValues(e.target.value);
     setFieldValue(fieldValue, e.target.value);
   };
 

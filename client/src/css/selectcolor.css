@@ -5,11 +5,22 @@
     font-size: (var(--text-fontSize));
 }
 
+.pallete__content {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 2px;
+}
+
+.pallete__content--column {
+    flex-direction: column;
+    align-items: start;
+}
+
 .pallette__box {
     display: flex;
     justify-content: start;
     align-items: center;
-    /* min-width: 14.1rem; */
     gap: 5px;
 }
 
