@@ -1,14 +1,15 @@
 import { useEffect, useRef } from "react";
-import { CloseButton } from "./Buttons";
-import "../../css/dialogform.css";
+import { CloseButton } from './Buttons'
+import '../../css/alertdialog.css'
 
-export default function DialogForm({ setShowForm, content, style = "" }) {
-  const formBlurRef = useRef();
+export default function AlertDialog({setShowForm, content}) {
+
+const alertDialogBlurRef = useRef();
 
   useEffect(() => {
     // We close the form when we click outside of it
     const handleClick = (e) => {
-      if (e.target === formBlurRef.current) {
+      if (e.target === alertDialogBlurRef.current) {
         setShowForm(false);
       }
     };
@@ -29,16 +30,16 @@ export default function DialogForm({ setShowForm, content, style = "" }) {
   }, []);
 
   return (
-    <div className="form-blur" ref={formBlurRef}>
-      <div className="form">
-        <CloseButton
-          className={"form__close-btn"}
-          handleOnClick={() => {
-            setShowForm(false);
-          }}
-        />
+    <div className="alert-dialog-blur" ref={alertDialogBlurRef}>
+        <div className="alert-dialog">
+            <CloseButton
+                className={"alert-dialog__close-btn"}
+                handleOnClick={()=> {
+                    setShowForm(false)
+                }}
+            />            
         {content}
-      </div>
+        </div>
     </div>
-  );
+  )
 }

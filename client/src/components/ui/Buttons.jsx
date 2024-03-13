@@ -1,5 +1,5 @@
 import "../../css/buttons.css";
-import { CloseIcon } from "./Icons";
+import { CloseIcon, EditIcon, TrashIcon } from "./Icons";
 
 export function PrimaryButton({ text, handleOnClick, type="button" }) {
   return (
@@ -25,6 +25,22 @@ export function CloseButton({ handleOnClick, className, type="button" }) {
   return (
     <button className={"close-btn" + " " + className} onClick={handleOnClick} type={type}>
       <CloseIcon />
+    </button>
+  );
+}
+
+export function RemoveButton({ handleOnClick, type="button" }) {
+  return (
+    <button className={"remove-btn"} onClick={handleOnClick} type={type}>
+      <TrashIcon />
+    </button>
+  );
+}
+
+export function EditButton({ handleOnClick, type="button" }) {
+  return (
+    <button className={"edit-btn"} onClick={handleOnClick} type={type}>
+      <EditIcon />
     </button>
   );
 }

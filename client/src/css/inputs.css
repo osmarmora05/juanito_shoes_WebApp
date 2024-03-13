@@ -1,12 +1,11 @@
-.textbox__label,.textarea__label {
+.textbox__label,.textarea__label,.textbox-search__label {
     display: block;
     color: var(--fuenteNormal);
     margin-bottom: 5px;
     font-size: (var(--text-fontSize));
 }
 
-
-.textbox__input,.textarea__input  {
+.textbox__input,.textarea__input,.textbox-search__input  {
     display: block;
     padding: 0.25rem 0.75rem 0.25rem 0.75rem;
     min-width: 20rem;
@@ -15,11 +14,30 @@
     font-size: var(--text-fontSize);
 }
 
+
+.textbox-search__input {
+    padding-left: 2.5rem;
+}
+
+.textbox-search__label + label  {
+    display: block;
+    position: relative;
+    width: 320px;
+}
+
+.textbox-search__label + label > svg {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 5.5px;
+    bottom: 0;
+}
+
 .textarea__input {
     height: 110px;
 }
 
-.textbox__input {
+.textbox__input, .textbox-search__input {
     height: 2.25rem;
 }
 

@@ -1,4 +1,5 @@
 import "../../css/inputs.css";
+import { SearchIcon } from "./Icons";
 
 export function TextBox({ title, name, placeHolder, handleOnchange, value }) {
   return (
@@ -12,6 +13,31 @@ export function TextBox({ title, name, placeHolder, handleOnchange, value }) {
         onChange={handleOnchange}
         value={value}
       />
+    </>
+  );
+}
+
+export default function TextBoxSearch({
+  title,
+  name,
+  placeHolder,
+  handleOnchange,
+  value,
+}) {
+  return (
+    <>
+      <label className="textbox-search__label">{title}</label>
+      <label>
+        <SearchIcon />
+        <input
+          type="text"
+          className="textbox-search__input"
+          name={name}
+          placeholder={placeHolder}
+          onChange={handleOnchange}
+          value={value}
+        />
+      </label>
     </>
   );
 }

@@ -1,4 +1,4 @@
-.secondary-btn, .primary-btn{
+.secondary-btn, .primary-btn, .edit-btn,.remove-btn{
     border-radius: calc(0.5rem - 2px);
     padding: 0.5rem 1rem 0.5rem 1rem;
     font-size: var(--text-fontSize);
@@ -15,7 +15,7 @@
     border: none;
 }
 
-.secondary-btn:hover, .secondary-btn:hover {
+.secondary-btn:hover, .primary-btn:hover,.edit-btn:hover,.remove-btn:hover {
     opacity: .9;
 }
 
@@ -38,4 +38,9 @@
     background-color: var(--colorSeleccion2);
     border: none;
     box-shadow: 0px 0px 100px 0px rgba(0,0,0,0.4);
+}
+
+.edit-btn,.remove-btn{
+   padding: 0;
+   font-size: 0;
 }

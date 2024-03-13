@@ -1,20 +1,93 @@
-import { TextArea, TextBox } from "../components/ui/Inputs";
+import TextBoxSearch, { TextArea, TextBox } from "../components/ui/Inputs";
 import ScreenHeader from "../components/ScreenHeader";
 import ComboBox from "../components/ui/ComboBox";
 import SelectSize from "../components/ui/SelectSize";
 import SelectColor from "../components/ui/SelectColor";
-import { PrimaryButton, SecondaryButton } from "../components/ui/Buttons";
+import {
+  EditButton,
+  PrimaryButton,
+  RemoveButton,
+  SecondaryButton,
+} from "../components/ui/Buttons";
 import SelectFile from "../components/ui/SelectFile";
-import { Form, Formik } from "formik";
+import { Field, Form, Formik } from "formik";
 import { Toaster, toast } from "sonner";
 import "../css/catalogo.css";
 import { useState } from "react";
 import DialogForm from "../components/ui/DialogForm";
-import AddCategories from "../components/AddCategories";
+import AddCategories from "../components/categories/AddCategories";
+import data from "../const/catalogo.json";
+import DataTable from "react-data-table-component";
+import EditCatalogo from "../components/EditCatologo";
 
 export function Catalogo() {
-  
-  const [showForm,setShowForm] = useState(false)
+  const [showAddCategoriesForm, setShowAddCategoriesForm] = useState(false);
+  const [showEditCatalogoForm, setShowEditCatalogoForm ] = useState(false);
+  const [records, setRecords] = useState(data);
+  const [field, setField] = useState(null);
+
+  const handleChangeRecords = (e) => {
+    const filteredRecords = data.filter((record) => {
+      return record.Nombre.toLowerCase().includes(e.target.value.toLowerCase());
+    });
+
+    setRecords(filteredRecords);
+  };
+
+  const columns = [
+    {
+      name: "ID",
+      selector: (row) => row.id,
+      sortable: true,
+    },
+    {
+      name: "Nombre",
+      selector: (row) => row.Nombre,
+      sortable: true,
+    },
+    {
+      name: "Categoría",
+      selector: (row) => row.Categoria,
+      sortable: true,
+    },
+    {
+      name: "Imagen",
+      selector: (row) => row.Imagen,
+      sortable: true,
+      resizable: true,
+      wrap: true,
+    },
+    {
+      name: "Tamaño",
+      selector: (row) => row.Tamaño,
+      sortable: true,
+    },
+    {
+      name: "Color",
+      selector: (row) => row.Color,
+      sortable: true,
+    },
+    {
+      name: "Descripción",
+      selector: (row) => row.Descripcion,
+      sortable: true,
+      wrap: true,
+    },
+    {
+      name: "Acciones",
+      cell: (row) => (
+        <div>
+          <RemoveButton />
+          <EditButton
+            handleOnClick={() => {
+              setShowEditCatalogoForm(true);
+              setField(row);
+            }}
+          />
+        </div>
+      ),
+    },
+  ];
 
   return (
     <section className="catalogo">
@@ -61,7 +134,9 @@ export function Catalogo() {
               } else {
                 const unfilledField =
                   property.charAt(0).toUpperCase() + property.slice(1);
-                toast.error("Ups! Se te paso por alto llenar el campo " + unfilledField);
+                toast.error(
+                  "Ups! Se te paso por alto llenar el campo " + unfilledField
+                );
                 return;
               }
             }
@@ -108,10 +183,12 @@ export function Catalogo() {
                           value={values.categoria}
                         />
                       </div>
-                      <SecondaryButton text={"Agregar"} handleOnClick={()=>{
-                        setShowForm(true)
-                        console.log("Estamos mostrando el formulario " + showForm)
-                      }} />
+                      <SecondaryButton
+                        text={"Agregar"}
+                        handleOnClick={() => {
+                          setShowAddCategoriesForm(true);
+                        }}
+                      />
                     </div>
                   </div>
                 </div>
@@ -173,16 +250,54 @@ export function Catalogo() {
               </div>
             </div>
             <footer className="catalogo__footer">
-              <SecondaryButton text={"Cancelar"} handleOnClick={()=>{
-                resetForm()
-                toast.success("Limpiado los campos")
-              }} />
+              <SecondaryButton
+                text={"Cancelar"}
+                handleOnClick={() => {
+                  resetForm();
+                  toast.success("Limpiado los campos");
+                }}
+              />
               <PrimaryButton text={"Aceptar"} type="submit" />
             </footer>
           </Form>
         )}
       </Formik>
-      {showForm && <DialogForm content={<AddCategories/>} setShowForm={setShowForm}/>}
+      {showAddCategoriesForm && (
+        <DialogForm
+          content={<AddCategories />}
+          setShowForm={setShowAddCategoriesForm}
+        />
+      )}
+
+      {showEditCatalogoForm && (
+        <DialogForm
+          content={<EditCatalogo row={field} />}
+          setShowForm={setShowEditCatalogoForm}
+        />
+      )}
+
+      <div style={{ width: "100%" }}>
+        Busque en el catalogo
+        <TextBoxSearch
+          placeHolder={"Buscar..."}
+          handleOnchange={handleChangeRecords}
+        />
+      </div>
+
+      <div style={{ width: "100%", height: "300px", overflowY: "auto" }}>
+        {data == undefined || data === null || data.length === 0 ? (
+          "Sin valores"
+        ) : (
+          <DataTable
+            columns={columns}
+            data={records} // Pasamos los datos del archivo JSON
+            pagination
+            paginationPerPage={4}
+            highlightOnHover
+          />
+        )}
+      </div>
+
       <Toaster />
     </section>
   );
