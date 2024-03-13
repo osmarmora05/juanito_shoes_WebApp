@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import ScreenHeader from "../ScreenHeader";
 import { Form, Formik } from "formik";
 import { TextBox } from "../ui/Inputs";
@@ -10,14 +10,15 @@ import {
 } from "../ui/Buttons";
 import { Toaster, toast } from "sonner";
 import DataTable from "react-data-table-component";
-import data from "../../const/categorias.json";
+// import data from "../../const/categorias.json";
 import TextBoxSearch from "../ui/Inputs";
 import "../../css/addcategories.css";
 import EditCategories from "./EditCategories";
 import AlertDialog from "../ui/AlertDialog";
 
 export default function AddCategories() {
-  const [records, setRecords] = useState(data);
+  const [records, setRecords] = useState([]);
+  const [filteredRecords, setFilteredRecords] = useState([]);
   const [showEditCategories, setShowEditCategories] = useState(false);
   const [field, setField] = useState(null);
 
@@ -49,12 +50,22 @@ export default function AddCategories() {
   ];
 
   const handleChangeRecords = (e) => {
-    const filteredRecords = data.filter((record) => {
+    const filteredRecords = records.filter((record) => {
       return record.Nombre.toLowerCase().includes(e.target.value.toLowerCase());
     });
 
-    setRecords(filteredRecords);
+    setFilteredRecords(filteredRecords);
   };
+
+  // Verificamos si existen los datos
+  
+  useEffect(() => {
+    if (typeof data !== "undefined" && data && data.length > 0) {
+      setRecords(data);
+      setFilteredRecords(data);
+    }
+  }, []);
+
 
   return (
     <div className="categories">
@@ -111,12 +122,12 @@ export default function AddCategories() {
         />
       </div>
       <div style={{ width: "100%", height: "300px", overflowY: "auto" }}>
-        {data == undefined || data === null || data.length === 0 ? (
+      {records.length === 0 ?  (
           "Sin valores"
         ) : (
           <DataTable
             columns={columns}
-            data={records} // Pasamos los datos del archivo JSON
+            data={filteredRecords}
             pagination
             paginationPerPage={4}
             highlightOnHover

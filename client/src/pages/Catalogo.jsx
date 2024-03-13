@@ -10,29 +10,39 @@ import {
   SecondaryButton,
 } from "../components/ui/Buttons";
 import SelectFile from "../components/ui/SelectFile";
-import { Field, Form, Formik } from "formik";
+import { Form, Formik } from "formik";
 import { Toaster, toast } from "sonner";
 import "../css/catalogo.css";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import DialogForm from "../components/ui/DialogForm";
 import AddCategories from "../components/categories/AddCategories";
-import data from "../const/catalogo.json";
+// import data from "../const/catalogo.json";
 import DataTable from "react-data-table-component";
 import EditCatalogo from "../components/EditCatologo";
 
 export function Catalogo() {
   const [showAddCategoriesForm, setShowAddCategoriesForm] = useState(false);
   const [showEditCatalogoForm, setShowEditCatalogoForm ] = useState(false);
-  const [records, setRecords] = useState(data);
+  const [records, setRecords] = useState([]);
+  const [filteredRecords, setFilteredRecords] = useState([]);
   const [field, setField] = useState(null);
 
   const handleChangeRecords = (e) => {
-    const filteredRecords = data.filter((record) => {
+    const filteredRecords = records.filter((record) => {
       return record.Nombre.toLowerCase().includes(e.target.value.toLowerCase());
     });
 
-    setRecords(filteredRecords);
+    setFilteredRecords(filteredRecords);
   };
+
+  // Verificamos si existen los datos
+
+  useEffect(() => {
+    if (typeof data !== "undefined" && data && data.length > 0) {
+      setRecords(data);
+      setFilteredRecords(data);
+    }
+  }, []);
 
   const columns = [
     {
@@ -285,19 +295,18 @@ export function Catalogo() {
       </div>
 
       <div style={{ width: "100%", height: "300px", overflowY: "auto" }}>
-        {data == undefined || data === null || data.length === 0 ? (
+        {records.length === 0 ?  (
           "Sin valores"
         ) : (
           <DataTable
             columns={columns}
-            data={records} // Pasamos los datos del archivo JSON
+            data={filteredRecords}
             pagination
             paginationPerPage={4}
             highlightOnHover
           />
         )}
       </div>
-
       <Toaster />
     </section>
   );
