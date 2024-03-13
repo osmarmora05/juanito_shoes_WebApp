@@ -7,6 +7,7 @@ import {
   PedidosIcon,
   RegistrarCatalogoIcon,
   ReportesIcon,
+  TrabajadoresIcon,
 } from "./ui/Icons";
 import "../css/navbar.css";
 
@@ -84,11 +85,22 @@ function NavBar() {
         {(roles.admin || noRolesOrAllFals) && (
           <NavItem
             to={"*"}
-            option={"usuarios-nav"}
+            option={"clientes-nav"}
             selectedOption={selectedOption}
-            onClick={() => handleRadioChange("usuarios-nav")}
+            onClick={() => handleRadioChange("clientes-nav")}
             icon={<ClientesIcon />}
             tooltip={"Clientes"}
+          />
+        )}
+
+        {(roles.admin || noRolesOrAllFals) && (
+          <NavItem
+            to={"*"}
+            option={"trabajadores-nav"}
+            selectedOption={selectedOption}
+            onClick={() => handleRadioChange("trabajadores-nav")}
+            icon={<TrabajadoresIcon />}
+            tooltip={"Trabajadores"}
           />
         )}
 
@@ -107,7 +119,7 @@ function NavBar() {
   );
 }
 
-function NavItem({ to, option, selectedOption, onClick, icon, tooltip="" }) {
+function NavItem({ to, option, selectedOption, onClick, icon, tooltip = "" }) {
   return (
     <li className="nav__item">
       <Link
