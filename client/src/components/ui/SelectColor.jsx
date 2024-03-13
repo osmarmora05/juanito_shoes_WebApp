@@ -100,6 +100,7 @@ function SelectColor({
                     : "none",
               }}
               onClick={() => handleSelectedColor(item.name)}
+              title={item.name}
             >
               <span
                 style={{ backgroundColor: item.color }}
@@ -126,6 +127,7 @@ function SelectColor({
                       : "none",
                 }}
                 onClick={() => handleSelectedColor(item.name)}
+                title={item.name}
               >
                 <span
                   style={{ backgroundColor: item.color }}

@@ -45,6 +45,7 @@ function NavBar() {
             selectedOption={selectedOption}
             onClick={() => handleRadioChange("catalogo-nav")}
             icon={<CatalogoIcon />}
+            tooltip={"Catalogo"}
           />
         )}
         {(roles.grocer || roles.admin || noRolesOrAllFals) && (
@@ -54,6 +55,7 @@ function NavBar() {
             selectedOption={selectedOption}
             onClick={() => handleRadioChange("entradas-nav")}
             icon={<RegistrarCatalogoIcon />}
+            tooltip={"Registrar productos"}
           />
         )}
 
@@ -64,6 +66,7 @@ function NavBar() {
             selectedOption={selectedOption}
             onClick={() => handleRadioChange("facturacion-nav")}
             icon={<FacturarIcon />}
+            tooltip={"Facturar"}
           />
         )}
 
@@ -74,6 +77,7 @@ function NavBar() {
             selectedOption={selectedOption}
             onClick={() => handleRadioChange("pedidos-nav")}
             icon={<PedidosIcon />}
+            tooltip={"Pedidos"}
           />
         )}
 
@@ -84,6 +88,7 @@ function NavBar() {
             selectedOption={selectedOption}
             onClick={() => handleRadioChange("usuarios-nav")}
             icon={<ClientesIcon />}
+            tooltip={"Clientes"}
           />
         )}
 
@@ -94,6 +99,7 @@ function NavBar() {
             selectedOption={selectedOption}
             onClick={() => handleRadioChange("reportes-nav")}
             icon={<ReportesIcon />}
+            tooltip={"Reportes"}
           />
         )}
       </ul>
@@ -101,7 +107,7 @@ function NavBar() {
   );
 }
 
-function NavItem({ to, option, selectedOption, onClick, icon }) {
+function NavItem({ to, option, selectedOption, onClick, icon, tooltip="" }) {
   return (
     <li className="nav__item">
       <Link
@@ -110,6 +116,7 @@ function NavItem({ to, option, selectedOption, onClick, icon }) {
           selectedOption === option ? "nav__link--selected" : ""
         }`}
         onClick={() => onClick(option)}
+        title={tooltip}
       >
         {icon}
       </Link>
