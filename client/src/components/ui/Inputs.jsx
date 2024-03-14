@@ -1,13 +1,14 @@
 import "../../css/inputs.css";
-import { SearchIcon } from "./Icons";
+import { EyeIcon, EyeOffIcon, SearchIcon } from "./Icons";
+import { useRef,useState,useEffect } from "react";
 
-export function TextBox({ title, name, placeHolder, handleOnchange, value }) {
+export function TextBox({ title, name, placeHolder, handleOnchange, value, type = "text" }) {
   return (
     <>
       <label className="textbox__label">{title}</label>
       <input
         className="textbox__input"
-        type="text"
+        type={type}
         name={name}
         placeholder={placeHolder}
         onChange={handleOnchange}
@@ -54,6 +55,51 @@ export function TextArea({ title, name, placeHolder, handleOnchange, value }) {
         onChange={handleOnchange}
         value={value}
       />
+    </>
+  );
+}
+
+export function PasswordBox({
+  title,
+  name,
+  placeHolder,
+  handleOnchange,
+  value,
+}) {
+  const passwordInputRef = useRef(null);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(prevState => !prevState);
+  };
+  
+  useEffect(() => {
+    passwordInputRef.current.type = showPassword ? "text" : "password";
+  }, [showPassword]);
+
+  return (
+    <>
+      <label className="password-box__label">{title}</label>
+      <label>
+        {showPassword ? (
+          <div className="password-box__eye">
+              <EyeIcon handleOnClick={togglePasswordVisibility} />
+          </div>
+        ) : (
+          <div className="password-box__eye">
+            <EyeOffIcon handleOnClick={togglePasswordVisibility} />
+          </div>
+        )}
+        <input
+          className="password-box__input"
+          ref={passwordInputRef}
+          type="password"
+          name={name}
+          placeholder={placeHolder}
+          onChange={handleOnchange}
+          value={value}
+        />
+      </label>
     </>
   );
 }
