@@ -8,7 +8,8 @@
 .combobox__select {
     display: block;
     padding: 0.25rem 0.75rem 0.25rem 0.75rem;
-    min-width: 20rem;
+    max-width: 20rem;
+    width: 100%;
     border: 1px solid var(--trazo);
     border-radius: calc(0.5rem - 2px);
     font-size: var(--text-fontSize);
