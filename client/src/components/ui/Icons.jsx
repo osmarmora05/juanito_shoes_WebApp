@@ -40,11 +40,11 @@ export function RobotIcon() {
   );
 }
 
-export function CatalogoIcon() {
+export function CatalogoIcon({className = ""}) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="icon icon-tabler icon-tabler-book-2"
+      className={`icon icon-tabler icon-tabler-book-2 ${className}`}
       width={32}
       height={32}
       viewBox="0 0 24 24"
@@ -62,11 +62,11 @@ export function CatalogoIcon() {
   );
 }
 
-export function RegistrarCatalogoIcon() {
+export function RegistrarCatalogoIcon({className = ""}) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="icon icon-tabler icon-tabler-clipboard-check"
+      className={`icon icon-tabler icon-tabler-clipboard-check ${className}`}
       width={32}
       height={32}
       viewBox="0 0 24 24"
@@ -84,11 +84,11 @@ export function RegistrarCatalogoIcon() {
   );
 }
 
-export function FacturarIcon() {
+export function FacturarIcon({className = ""}) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="icon icon-tabler icon-tabler-shopping-cart"
+      className={`icon icon-tabler icon-tabler-shopping-cart ${className}`}
       width={32}
       height={32}
       viewBox="0 0 24 24"
@@ -107,11 +107,11 @@ export function FacturarIcon() {
   );
 }
 
-export function PedidosIcon() {
+export function PedidosIcon({className = ""}) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="icon icon-tabler icon-tabler-shopping-bag"
+      className={`icon icon-tabler icon-tabler-shopping-bag ${className}`}
       width={32}
       height={32}
       viewBox="0 0 24 24"
@@ -128,11 +128,11 @@ export function PedidosIcon() {
   );
 }
 
-export function ClientesIcon() {
+export function ClientesIcon({className = ""}) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="icon icon-tabler icon-tabler-users-group"
+      className={`icon icon-tabler icon-tabler-users-group ${className}`}
       width={32}
       height={32}
       viewBox="0 0 24 24"
@@ -153,10 +153,11 @@ export function ClientesIcon() {
   );
 }
 
-export function TrabajadoresIcon() {
+export function TrabajadoresIcon({className = ""}) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
+      className={`icon icon-tabler icons-tabler-outline icon-tabler-user-plus ${className}`}
       width={32}
       height={32}
       viewBox="0 0 24 24"
@@ -165,7 +166,6 @@ export function TrabajadoresIcon() {
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="icon icon-tabler icons-tabler-outline icon-tabler-user-plus"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
@@ -176,11 +176,11 @@ export function TrabajadoresIcon() {
   );
 }
 
-export function ReportesIcon() {
+export function ReportesIcon({className = ""}) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="icon icon-tabler icon-tabler-file"
+      className={`icon icon-tabler icon-tabler-file ${className}`}
       width={32}
       height={32}
       viewBox="0 0 24 24"
