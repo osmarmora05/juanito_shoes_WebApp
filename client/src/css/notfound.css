@@ -7,12 +7,19 @@
     align-items: center;
 }
 
-.not-found__404-box {
+.not-found__box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.not-found__404-icon-and-title-box {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    height: 10%;
 }
 
 .not-found__404 {
