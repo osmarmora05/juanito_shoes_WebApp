@@ -26,9 +26,13 @@
     gap: 10px;
 }
 
+.categories__field > div {
+    width: 100%;
+}
+
 .categories__field > div:nth-of-type(2) {
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     gap: 10px;
 }
