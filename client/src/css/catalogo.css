@@ -16,6 +16,10 @@
     width: 100%;
 }
 
+.catalogo__content {
+    width: 100%;
+}
+
 .catalogo__footer {
     width: 100%;
     display: flex;
@@ -40,17 +44,26 @@
 
 .catalogo__columns {
     display: grid;
-    grid-template-columns: 430px 430px 350px 150px 1fr;
+    grid-template-columns: minmax(320px,1fr) minmax(320px,1fr) minmax(300px,1f) minmax(150px,1fr) 1fr;
     grid-template-rows: 80px 180px;
     width: 100%;
 }
 
 .catalog__with-buttons {
     display: flex;
-    justify-content: center;
-    align-items: end;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
     gap: 10px;
 }
+
+.catalog__with-buttons > div {
+    width: 100%;
+}
+
+.catalogo__model-and-category-box > div {
+    width: 100%;
+} 
 
 /*Nombre*/
 .catalogo__columns > div:nth-of-type(1) {
@@ -59,6 +72,7 @@
 
 /*Modelo & categoria*/
 .catalogo__columns > div:nth-of-type(2) {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -95,4 +109,86 @@
     flex-direction: column;
     justify-content: start;
     align-items: center;
+}
+
+/* Media */
+
+/* Lab p2 */
+@media (max-width: 1366px) {
+    .catalogo__separator {
+        display: none;
+    }
+
+    .catalogo__columns  {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 80px 300px;
+    }
+
+    /*Imagnes*/
+    .catalogo__columns > div:nth-of-type(6){
+        grid-area: 2 / 3 / 3 / 4;
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        margin-top: 70px;
+    }
+}
+
+/* Labtop del roco (1024) pero se reompe antes ... */
+@media (max-width: 1124px) {
+
+    .catalogo__separator {
+        display: none;
+    }
+
+    .catalogo__columns  {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 80px 200px 330px;
+    }
+    
+    /*Nombre*/
+    .catalogo__columns > div:nth-of-type(1) {
+        grid-area: 1 / 1 / 2 / 2;
+    }
+
+    /*Modelo & categoria*/
+    .catalogo__columns > div:nth-of-type(2) {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+        gap: 20px;
+        grid-area: 2 / 1 / 3 / 2;
+    } 
+
+    /*Tamaño & color*/
+    .catalogo__columns > div:nth-of-type(3) {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        gap: 18px;
+        padding-left: 20px;
+        grid-area: 1 / 2 / 3 / 3;
+    }
+
+    /* Color container */
+    .catalogo__columns > div:nth-of-type(3) > div:nth-of-type(2) {
+        margin-top: 20px;
+    }
+
+    /*Descripcion*/
+    .catalogo__columns > div:nth-of-type(4){
+        grid-area: 3 / 1 / 4 / 2;
+    }
+
+    /*Imagnes*/
+    .catalogo__columns > div:nth-of-type(6){
+        grid-area: 3 / 2 / 4 / 3;
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        margin-top: 0;
+        padding-left: 20px;
+    }
 }
