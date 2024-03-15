@@ -16,7 +16,7 @@
 
 .form {
     width: 600px;
-    height: 600px;
+    height: 80%;
     background-color: var(--fondoNormal);
     color: var(--fuenteNormal);
     overflow-y: auto;
