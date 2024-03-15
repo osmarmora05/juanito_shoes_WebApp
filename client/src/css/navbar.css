@@ -13,7 +13,7 @@
 .nav__logo {
     width: auto;
     height: auto;
-    position:absolute;
+    position: absolute;
     top: 15px;
 }
 
@@ -34,9 +34,9 @@
     justify-content: center;
     align-items: center;
     background-color: var(--fondoNormal);
-    height: 40px;
-    width: 40px;
-    border-radius: 12px;
+    height: 32px;
+    width: 32px;
+    border-radius: 8px;
     color: var(--fuenteNormal);
 }
 
@@ -45,6 +45,29 @@
 }
 
 .nav__icon {
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
+}
+
+@media (max-width: 1024px) {
+
+    .nav__list {
+        gap: 24px;
+    }
+
+    .nav__link, .nav__link--selected,.nav__icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 8px;
+
+    }
+   
+}
+
+@media (max-width: 1366px) {
+    .nav__link, .nav__link--selected,.nav__icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 8px;
+    }
 }

@@ -45,7 +45,7 @@ function NavBar() {
             option={"catalogo-nav"}
             selectedOption={selectedOption}
             onClick={() => handleRadioChange("catalogo-nav")}
-            icon={<CatalogoIcon />}
+            icon={<CatalogoIcon className="nav__icon" />}
             tooltip={"Catalogo"}
           />
         )}
@@ -55,7 +55,7 @@ function NavBar() {
             option={"entradas-nav"}
             selectedOption={selectedOption}
             onClick={() => handleRadioChange("entradas-nav")}
-            icon={<RegistrarCatalogoIcon />}
+            icon={<RegistrarCatalogoIcon className="nav__icon" />}
             tooltip={"Registrar productos"}
           />
         )}
@@ -66,7 +66,7 @@ function NavBar() {
             option={"facturacion-nav"}
             selectedOption={selectedOption}
             onClick={() => handleRadioChange("facturacion-nav")}
-            icon={<FacturarIcon />}
+            icon={<FacturarIcon className="nav__icon" />}
             tooltip={"Facturar"}
           />
         )}
@@ -77,7 +77,7 @@ function NavBar() {
             option={"pedidos-nav"}
             selectedOption={selectedOption}
             onClick={() => handleRadioChange("pedidos-nav")}
-            icon={<PedidosIcon />}
+            icon={<PedidosIcon className="nav__icon" />}
             tooltip={"Pedidos"}
           />
         )}
@@ -88,18 +88,18 @@ function NavBar() {
             option={"clientes-nav"}
             selectedOption={selectedOption}
             onClick={() => handleRadioChange("clientes-nav")}
-            icon={<ClientesIcon />}
+            icon={<ClientesIcon className="nav__icon" />}
             tooltip={"Clientes"}
           />
         )}
 
         {(roles.admin || noRolesOrAllFals) && (
           <NavItem
-            to={"*"}
+            to={"trabajadores"}
             option={"trabajadores-nav"}
             selectedOption={selectedOption}
             onClick={() => handleRadioChange("trabajadores-nav")}
-            icon={<TrabajadoresIcon />}
+            icon={<TrabajadoresIcon className="nav__icon" />}
             tooltip={"Trabajadores"}
           />
         )}
@@ -110,7 +110,7 @@ function NavBar() {
             option={"reportes-nav"}
             selectedOption={selectedOption}
             onClick={() => handleRadioChange("reportes-nav")}
-            icon={<ReportesIcon />}
+            icon={<ReportesIcon className="nav__icon" />}
             tooltip={"Reportes"}
           />
         )}
