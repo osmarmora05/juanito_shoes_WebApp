@@ -21,6 +21,11 @@
     gap: 10px;
 }
 
+.edit-catalogo__id {
+    width: 100%;
+    text-align: end;
+}
+
 .edit-catalogo__form > footer {
     width: 100%;
     display: flex;

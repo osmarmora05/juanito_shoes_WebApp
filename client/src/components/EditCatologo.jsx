@@ -29,6 +29,8 @@ export default function EditCatalogo({ row }) {
       >
         {({handleChange,values, setFieldValue}) => (
           <Form className="edit-catalogo__form">
+
+            <label className="edit-catalogo__id">{`Id: ${row.id}`}</label>
             <div>
               <TextBox
                 title={"Nombre"}
