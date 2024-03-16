@@ -4,6 +4,7 @@ import NotFound from "./pages/NotFound";
 import NavBar from "./components/NavBar";
 import './css/app.css'
 import './css/styles.css'
+import Trabajadores from "./pages/Trabajadores";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="catalogo" element={<Catalogo />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="trabajadores" element={<Trabajadores/>}></Route>
       </Routes>
       </div>
     </div>
