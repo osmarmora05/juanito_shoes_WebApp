@@ -17,6 +17,10 @@
     padding: 20px;
     width: 100%;
 }
+.form-edit-categories__id {
+    width: 100%;
+    text-align: end;
+}
 
 .form-edit-categories > div {
     display: flex;
@@ -27,9 +31,10 @@
 }
 
 .form-edit-categories > div > div{
+    width: 100%;
     margin-top: 5px;
 }
-.form-edit-categories__id, .form-edit-categories__current-name {
+.form-edit-categories__id {
     display: block;
 }
 

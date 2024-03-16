@@ -9,7 +9,7 @@ export default function EditCategories({ row }) {
     <div className="edit-categories">
       <Formik
         initialValues={{
-          nombre: "",
+          nombre: row.Nombre,
         }}
         onSubmit={(values, actions) => {
           if (values.nombre.length == 0) {
@@ -17,6 +17,7 @@ export default function EditCategories({ row }) {
             return;
           }
 
+          console.log(values)
           toast.success("Todo correcto");
           actions.resetForm();
         }}
@@ -25,7 +26,6 @@ export default function EditCategories({ row }) {
           <Form className="form-edit-categories">
             <div>
               <label className="form-edit-categories__id">{`Id: ${row.id}`}</label>
-              <label className="form-edit-categories__current-name">{`Nombre actual: ${row.Nombre}`}</label>
               <div>
                 <TextBox
                   title={"Nombre"}
