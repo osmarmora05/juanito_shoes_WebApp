@@ -3,12 +3,12 @@ import { PrimaryButton } from "../ui/Buttons";
 import { TextBox, PasswordBox } from "../ui/Inputs";
 import ComboBox from "../ui/ComboBox";
 import ScreenHeader from "../ScreenHeader";
-import "../../css/editworkers.css";
+import '../../css/edittableinfo.css'
 
 export default function EditWorkers({ row }) {
   console.log(row);
   return (
-    <div className="edit-workers">
+    <div className="edit-table">
       <ScreenHeader
         title="Edición del personal"
         description="Edita la informacion del personal"
@@ -22,9 +22,9 @@ export default function EditWorkers({ row }) {
         }}
       >
         {({ handleChange, values, setFieldValue }) => (
-          <Form className="edit-workers__form">
-            <div>
-              <label className="edit-workers__id">{`Id: ${row.id}`}</label>
+          <Form className="edit-table__form">
+            <div className="edit-table__content">
+              <label className="edit-table__id">{`Id: ${row.id}`}</label>
               <div>
                 <TextBox
                   title={"Nombre"}
@@ -64,7 +64,7 @@ export default function EditWorkers({ row }) {
                 />
               </div>
             </div>
-            <footer>
+            <footer className="edit-table__footer">
               <PrimaryButton text={"Aceptar"} />
             </footer>
           </Form>

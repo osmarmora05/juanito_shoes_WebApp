@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import ScreenHeader from "../ScreenHeader";
 import { Form, Formik } from "formik";
 import { TextBox } from "../ui/Inputs";
@@ -12,9 +12,9 @@ import { Toaster, toast } from "sonner";
 import DataTable from "react-data-table-component";
 import data from "../../const/categorias.json";
 import TextBoxSearch from "../ui/Inputs";
-import "../../css/addcategories.css";
 import EditCategories from "./EditCategories";
 import AlertDialog from "../ui/AlertDialog";
+import "../../css/edittableinfo.css";
 
 export default function AddCategories() {
   const [records, setRecords] = useState([]);
@@ -58,7 +58,7 @@ export default function AddCategories() {
   };
 
   // Verificamos si existen los datos
-  
+
   useEffect(() => {
     if (typeof data !== "undefined" && data && data.length > 0) {
       setRecords(data);
@@ -66,9 +66,8 @@ export default function AddCategories() {
     }
   }, []);
 
-
   return (
-    <div className="categories">
+    <div className="edit-table">
       <ScreenHeader
         title="Registro de categorías"
         description="Ingreso de categorías de productos"
@@ -88,8 +87,8 @@ export default function AddCategories() {
         }}
       >
         {({ handleChange, values, resetForm }) => (
-          <Form className="categories__form">
-            <div className="categories__field">
+          <Form className="edit-table__form">
+            <div className="edit-table__content">
               <div>
                 <TextBox
                   title={"Nombre"}
@@ -99,7 +98,7 @@ export default function AddCategories() {
                 />
               </div>
 
-              <div>
+              <footer style={{display: "flex", justifyContent: "star", alignItems: "center", gap: "10px"}}>
                 <SecondaryButton
                   text={"Cancelar"}
                   handleOnClick={() => {
@@ -108,7 +107,7 @@ export default function AddCategories() {
                   }}
                 />
                 <PrimaryButton type="submit" text={"Aceptar"} />
-              </div>
+              </footer>
             </div>
             <div></div>
           </Form>
@@ -122,7 +121,7 @@ export default function AddCategories() {
         />
       </div>
       <div style={{ width: "100%", height: "300px", overflowY: "auto" }}>
-      {records.length === 0 ?  (
+        {records.length === 0 ? (
           "Sin valores"
         ) : (
           <DataTable

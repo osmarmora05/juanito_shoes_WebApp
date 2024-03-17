@@ -1,12 +1,12 @@
 import { Form, Formik } from "formik";
 import { PasswordBox, TextArea, TextBox } from "../ui/Inputs";
 import ScreenHeader from "../ScreenHeader";
-import "../../css/editclientes.css";
 import { PrimaryButton } from "../ui/Buttons";
+import '../../css/edittableinfo.css'
 
 export default function EditClientes({ row }) {
   return (
-    <div className="edit-clientes">
+    <div className="edit-table">
       <ScreenHeader
         title={"Edición de clientes"}
         description="Edita la informacion de los clientes"
@@ -21,9 +21,9 @@ export default function EditClientes({ row }) {
         }}
       >
         {({ handleChange, values }) => (
-          <Form className="edit-clientes__form">
-            <div>
-              <label className="edit-clientes__id">{`Id: ${row.id}`}</label>
+          <Form className="edit-table__form">
+            <div className="edit-table__content">
+              <label className="edit-table__id">{`Id: ${row.id}`}</label>
               <div>
                 <TextBox
                   title={"Nombre"}
@@ -71,7 +71,7 @@ export default function EditClientes({ row }) {
                 />
               </div>
             </div>
-            <footer>
+            <footer className="edit-table__footer">
               <PrimaryButton text={"Aceptar"} />
             </footer>
           </Form>

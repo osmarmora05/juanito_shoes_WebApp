@@ -2,11 +2,11 @@ import { Form, Formik } from "formik";
 import { TextBox } from "../ui/Inputs";
 import { PrimaryButton } from "../ui/Buttons";
 import { Toaster, toast } from "sonner";
-import '../../css/editcategories.css'
+import '../../css/edittableinfo.css'
 
 export default function EditCategories({ row }) {
   return (
-    <div className="edit-categories">
+    <div className="edit-table">
       <Formik
         initialValues={{
           nombre: row.Nombre,
@@ -23,9 +23,9 @@ export default function EditCategories({ row }) {
         }}
       >
         {({ handleChange, values, resetForm }) => (
-          <Form className="form-edit-categories">
-            <div>
-              <label className="form-edit-categories__id">{`Id: ${row.id}`}</label>
+          <Form className="edit-table__form">
+            <div className="edit-table__content">
+              <label className="edit-table__id">{`Id: ${row.id}`}</label>
               <div>
                 <TextBox
                   title={"Nombre"}
@@ -36,7 +36,7 @@ export default function EditCategories({ row }) {
                 />
               </div>
             </div>
-            <footer>
+            <footer className="edit-table__footer">
               <PrimaryButton
                 text={"Aceptar"}
                 type="submit"

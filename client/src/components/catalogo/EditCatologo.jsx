@@ -6,11 +6,11 @@ import SelectColor from "../ui/SelectColor";
 import SelectSize from "../ui/SelectSize";
 import ComboBox from "../ui/ComboBox";
 import { PrimaryButton } from "../ui/Buttons";
-import "../../css/editcatalogo.css";
+import '../../css/edittableinfo.css'
 
 export default function EditCatalogo({ row }) {
   return (
-    <div className="edit-catalogo">
+    <div className="edit-table">
       <ScreenHeader
         title="Edicion de catalogo"
         description="Edita las categorias de productos"
@@ -28,8 +28,8 @@ export default function EditCatalogo({ row }) {
         }}
       >
         {({ handleChange, values, setFieldValue }) => (
-          <Form className="edit-catalogo__form">
-            <label className="edit-catalogo__id">{`Id: ${row.id}`}</label>
+          <Form className="edit-table__form">
+            <label className="edit-table__id">{`Id: ${row.id}`}</label>
             <div>
               <TextBox
                 title={"Nombre"}
@@ -100,11 +100,11 @@ export default function EditCatalogo({ row }) {
               <label>Imagen actual</label>
               <img
                 src={values.currenFile}
-                className="edit-catalogo__current-image"
+                style={{display: "block", width: "250px", height: "400px"}}
               />
             </div>
 
-            <footer>
+            <footer className="edit-table__footer">
               <PrimaryButton text={"Aceptar"} />
             </footer>
           </Form>
