@@ -1,12 +1,12 @@
 import { Form, Formik } from "formik";
-import ScreenHeader from "./ScreenHeader";
-import { TextBox, TextArea } from "./ui/Inputs";
-import SelectFile from "./ui/SelectFile";
-import SelectColor from "../components/ui/SelectColor";
-import SelectSize from "./ui/SelectSize";
-import ComboBox from "./ui/ComboBox";
-import { PrimaryButton } from "./ui/Buttons";
-import "../css/editcatalogo.css";
+import ScreenHeader from "../ScreenHeader";
+import { TextBox, TextArea } from "../ui/Inputs";
+import SelectFile from "../ui/SelectFile";
+import SelectColor from "../ui/SelectColor";
+import SelectSize from "../ui/SelectSize";
+import ComboBox from "../ui/ComboBox";
+import { PrimaryButton } from "../ui/Buttons";
+import "../../css/editcatalogo.css";
 
 export default function EditCatalogo({ row }) {
 

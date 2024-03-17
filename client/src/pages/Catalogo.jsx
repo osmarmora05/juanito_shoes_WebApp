@@ -18,7 +18,7 @@ import DialogForm from "../components/ui/DialogForm";
 import AddCategories from "../components/categories/AddCategories";
 import data from "../const/catalogo.json";
 import DataTable from "react-data-table-component";
-import EditCatalogo from "../components/EditCatologo";
+import EditCatalogo from "../components/catalogo/EditCatologo";
 
 export function Catalogo() {
   const [showAddCategoriesForm, setShowAddCategoriesForm] = useState(false);
