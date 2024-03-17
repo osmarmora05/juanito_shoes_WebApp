@@ -9,8 +9,6 @@ import { PrimaryButton } from "../ui/Buttons";
 import "../../css/editcatalogo.css";
 
 export default function EditCatalogo({ row }) {
-
-  console.log(row)
   return (
     <div className="edit-catalogo">
       <ScreenHeader
