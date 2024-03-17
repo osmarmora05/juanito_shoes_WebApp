@@ -73,7 +73,7 @@ function NavBar() {
 
         {(roles.cashier || roles.admin || noRolesOrAllFals) && (
           <NavItem
-            to={"*"}
+            to={"pedidos"}
             option={"pedidos-nav"}
             selectedOption={selectedOption}
             onClick={() => handleRadioChange("pedidos-nav")}

@@ -6,6 +6,7 @@ import Trabajadores from "./pages/Trabajadores";
 import Clientes from "./pages/Clientes";
 import './css/app.css'
 import './css/styles.css'
+import Pedidos from "./pages/Pedidos";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
         <Route path="trabajadores" element={<Trabajadores/>}/>
         <Route path="clientes" element={<Clientes/>}/>
+        <Route path="pedidos" element={<Pedidos/>}/>
       </Routes>
       </div>
     </div>
