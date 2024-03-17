@@ -10,7 +10,7 @@ import {
 } from "../ui/Buttons";
 import { Toaster, toast } from "sonner";
 import DataTable from "react-data-table-component";
-// import data from "../../const/categorias.json";
+import data from "../../const/categorias.json";
 import TextBoxSearch from "../ui/Inputs";
 import "../../css/addcategories.css";
 import EditCategories from "./EditCategories";
