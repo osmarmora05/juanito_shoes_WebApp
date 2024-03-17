@@ -20,7 +20,7 @@ export default function EditCatalogo({ row }) {
       <Formik
         initialValues={{
           nombre: row.Nombre,
-          modelo: row.modelo,
+          modelo: row.Modelo,
           categoria: [{ text: row.Categoria, value: row.Categoria}],
           size: parseInt(row.Tamaño),
           color: row.Color,

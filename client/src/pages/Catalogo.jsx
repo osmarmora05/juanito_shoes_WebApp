@@ -56,6 +56,11 @@ export function Catalogo() {
       sortable: true,
     },
     {
+      name: "Modelo",
+      selector: (row) => row.Modelo,
+      sortable: true
+    },
+    {
       name: "Categoría",
       selector: (row) => row.Categoria,
       sortable: true,
