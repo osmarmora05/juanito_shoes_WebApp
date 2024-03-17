@@ -2,9 +2,10 @@ import { Routes, Route } from "react-router-dom";
 import { Catalogo } from "./pages/Catalogo";
 import NotFound from "./pages/NotFound";
 import NavBar from "./components/NavBar";
+import Trabajadores from "./pages/Trabajadores";
+import Clientes from "./pages/Clientes";
 import './css/app.css'
 import './css/styles.css'
-import Trabajadores from "./pages/Trabajadores";
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
       <Routes>
         <Route path="catalogo" element={<Catalogo />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="trabajadores" element={<Trabajadores/>}></Route>
+        <Route path="trabajadores" element={<Trabajadores/>}/>
+        <Route path="clientes" element={<Clientes/>}/>
       </Routes>
       </div>
     </div>

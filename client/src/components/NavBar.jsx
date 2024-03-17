@@ -84,7 +84,7 @@ function NavBar() {
 
         {(roles.admin || noRolesOrAllFals) && (
           <NavItem
-            to={"*"}
+            to={"clientes"}
             option={"clientes-nav"}
             selectedOption={selectedOption}
             onClick={() => handleRadioChange("clientes-nav")}
