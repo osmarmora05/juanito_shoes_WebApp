@@ -89,17 +89,21 @@ export default function Clientes() {
         />
       </div>
       <div className="client__table">
-        <DataTable
-          columns={COLUMNS}
-          data={filteredRecords}
-          pagination
-          paginationPerPage={6}
-          highlightOnHover
-        />
+        {records.length === 0 ? (
+          "Sin valores"
+        ) : (
+          <DataTable
+            columns={COLUMNS}
+            data={filteredRecords}
+            pagination
+            paginationPerPage={6}
+            highlightOnHover
+          />
+        )}
       </div>
       {showEditClientesForm && (
         <DialogForm
-          content={<EditClientes row={field}/>}
+          content={<EditClientes row={field} />}
           setShowForm={setShowEditClientesForm}
         />
       )}
