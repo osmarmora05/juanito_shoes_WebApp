@@ -9,6 +9,8 @@ import { PrimaryButton } from "./ui/Buttons";
 import "../css/editcatalogo.css";
 
 export default function EditCatalogo({ row }) {
+
+  console.log(row)
   return (
     <div className="edit-catalogo">
       <ScreenHeader
@@ -19,7 +21,7 @@ export default function EditCatalogo({ row }) {
         initialValues={{
           nombre: row.Nombre,
           modelo: row.modelo,
-          categoria: row.Categoria,
+          categoria: [{ text: row.Categoria, value: row.Categoria}],
           size: parseInt(row.Tamaño),
           color: row.Color,
           descripcion: row.Descripcion,
@@ -27,9 +29,8 @@ export default function EditCatalogo({ row }) {
           currenFile: row.Imagen,
         }}
       >
-        {({handleChange,values, setFieldValue}) => (
+        {({ handleChange, values, setFieldValue }) => (
           <Form className="edit-catalogo__form">
-
             <label className="edit-catalogo__id">{`Id: ${row.id}`}</label>
             <div>
               <TextBox
@@ -54,8 +55,9 @@ export default function EditCatalogo({ row }) {
               <ComboBox
                 title={"Categoria"}
                 fieldValue={"categoria"}
+                value={"categoria"}
                 setFieldValue={setFieldValue}
-                value={values.categoria}
+                values={values.categoria}
               />
             </div>
 
@@ -98,7 +100,10 @@ export default function EditCatalogo({ row }) {
 
             <div>
               <label>Imagen actual</label>
-              <img src={values.currenFile} className="edit-catalogo__current-image"/>
+              <img
+                src={values.currenFile}
+                className="edit-catalogo__current-image"
+              />
             </div>
 
             <footer>
