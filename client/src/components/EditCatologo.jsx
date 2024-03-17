@@ -55,7 +55,7 @@ export default function EditCatalogo({ row }) {
               <ComboBox
                 title={"Categoria"}
                 fieldValue={"categoria"}
-                value={"categoria"}
+                value={values.categoria}
                 setFieldValue={setFieldValue}
                 values={values.categoria}
               />
