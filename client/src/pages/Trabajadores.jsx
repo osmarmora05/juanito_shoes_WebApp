@@ -1,24 +1,99 @@
 import { Form, Formik } from "formik";
 import ScreenHeader from "../components/ScreenHeader";
-import { PrimaryButton, SecondaryButton } from "../components/ui/Buttons";
-import { PasswordBox, TextBox } from "../components/ui/Inputs";
+import {
+  EditButton,
+  PrimaryButton,
+  RemoveButton,
+  SecondaryButton,
+} from "../components/ui/Buttons";
+import TextBoxSearch, { PasswordBox, TextBox } from "../components/ui/Inputs";
 import ComboBox from "../components/ui/ComboBox";
+import { useState, useEffect } from "react";
 import { Toaster, toast } from "sonner";
 import "../css/trabajadores.css";
+import data from "../const/trabajadores.json";
+import DataTable from "react-data-table-component";
+import DialogForm from "../components/ui/DialogForm";
+import EditWorkers from "../components/workers/EditWorkers";
+
+const ROLES = [
+  {
+    text: "Bodeguero",
+    value: "Bodeguero",
+  },
+  {
+    text: "Administrador",
+    value: "Administrador",
+  },
+  {
+    text: "Vendedor",
+    value: "Vendedor",
+  },
+];
 
 export default function Trabajadores() {
-  const ROLES = [
+  const [showEditWorkersForm, setShowEditWorkersForm] = useState(false);
+  const [field, setField] = useState(null);
+  const [records, setRecords] = useState([]);
+  const [filteredRecords, setFilteredRecords] = useState([]);
+
+  const handleChangeRecords = (e) => {
+    const filteredRecords = records.filter((record) => {
+      return record.Nombre.toLowerCase().includes(e.target.value.toLowerCase());
+    });
+
+    setFilteredRecords(filteredRecords);
+  };
+  
+  // Verificamos si existen los datos
+  useEffect(() => {
+    if (typeof data !== "undefined" && data && data.length > 0) {
+      setRecords(data);
+      setFilteredRecords(data);
+    }
+  }, []);
+
+  const COLUMNS = [
     {
-      text: "Bodeguero",
-      value: "Bodeguero",
+      name: "ID",
+      selector: (row) => row.id,
+      sortable: true,
     },
     {
-      text: "Administrador",
-      value: "Administrador",
+      name: "Nombre",
+      selector: (row) => row.Nombre,
+      sortable: true,
     },
     {
-      text: "Vendedor",
-      value: "Vendedor",
+      name: "Correo",
+      selector: (row) => row.Correo,
+      sortable: true,
+      wrap: true,
+    },
+    {
+      name: "Contraseña",
+      selector: (row) => row.Contraseña,
+      sortable: true,
+      wrap: true,
+    },
+    {
+      name: "Rol",
+      selector: (row) => row.Rol,
+      sortable: true,
+    },
+    {
+      name: "Acciones",
+      cell: (row) => (
+        <div>
+          <RemoveButton />
+          <EditButton
+            handleOnClick={() => {
+              setShowEditWorkersForm(true);
+              setField(row);
+            }}
+          />
+        </div>
+      ),
     },
   ];
 
@@ -75,7 +150,7 @@ export default function Trabajadores() {
           actions.resetForm();
         }}
       >
-        {({ handleChange, values, setFieldValue }) => (
+        {({ handleChange, values, setFieldValue, resetForm }) => (
           <Form className="trabajadores__form">
             <div className="trabajadores__columns">
               {/* Primera columna */}
@@ -119,12 +194,44 @@ export default function Trabajadores() {
               </div>
             </div>
             <footer>
-              <SecondaryButton text={"Cancelar"} />
+              <SecondaryButton
+                text={"Cancelar"}
+                handleOnClick={() => {
+                  resetForm();
+                  toast.success("Limpiado los campos");
+                }}
+              />
               <PrimaryButton text={"Aceptar"} type="submit" />
             </footer>
           </Form>
         )}
       </Formik>
+      {showEditWorkersForm && (
+      <DialogForm
+        content={<EditWorkers row={field} />}
+        setShowForm={setShowEditWorkersForm}
+      />
+      )}
+      <div style={{ width: "100%" }}>
+        Busque trabajadores
+        <TextBoxSearch
+          placeHolder={"Buscar..."}
+          handleOnchange={handleChangeRecords}
+        />
+      </div>
+      <div style={{ width: "100%", height: "300px", overflowY: "auto" }}>
+        {records.length === 0 ? (
+          "Sin valores"
+        ) : (
+          <DataTable
+            columns={COLUMNS}
+            data={filteredRecords}
+            pagination
+            paginationPerPage={4}
+            highlightOnHover
+          />
+        )}
+      </div>
       <Toaster />
     </section>
   );
