@@ -93,6 +93,7 @@ export default function AddCategories() {
                 <TextBox
                   title={"Nombre"}
                   name={"nombre"}
+                  placeHolder={"Ingrese el nuevo nombre"}
                   value={values.nombre}
                   handleOnchange={handleChange}
                 />
