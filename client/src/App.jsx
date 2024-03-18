@@ -7,6 +7,7 @@ import Clientes from "./pages/Clientes";
 import './css/app.css'
 import './css/styles.css'
 import Pedidos from "./pages/Pedidos";
+import Reportes from "./pages/Reportes";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="trabajadores" element={<Trabajadores/>}/>
         <Route path="clientes" element={<Clientes/>}/>
         <Route path="pedidos" element={<Pedidos/>}/>
+        <Route path="reportes" element={<Reportes/>}/>
       </Routes>
       </div>
     </div>
