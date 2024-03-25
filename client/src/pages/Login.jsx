@@ -1,41 +1,54 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
+import "../css/LoginForm.css";
+import JuanitoStoreImage from "../JuanitoStore.png";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate =useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    setIsLoggedIn(true);
+    navigate("/app/*")
+  };
+  const handleForgotPassword = () => {
+    history.push("/forgot-password");
   };
 
   return (
-    <div className="contenedor">
-      <div className="fondo-Contenedor">
-        <img src="imagenParaFondo" alt="JuanitoStore" />
-        <div className="DivDegradado"></div>
+    <div className="container">
+      <div className="imagen-empresa">
+        <img src={JuanitoStoreImage} alt="juantistore" />
+        <div className="capa-opaca"></div>
       </div>
-      <div className="login-Contenedor">
+      <div className="formulario">
         <h1>Login</h1>
-        <div className="contenedor-Formik">
-          <div className="contenedor-Centrador">
+        <div className="container-caja">
+          <div className="formulario-inner">
+            <h2>Iniciar Sesión</h2>
             <form onSubmit={handleSubmit}>
-              <input
-                type="text"
-                placeholder="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-              <input
-                type="password"
-                placeholder="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <Link to={"app/"}>Hola</Link>
-            </form>
+            <input
+              type="text"
+              name="usuario"
+              placeholder="Usuario"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+            <input
+              type="password"
+              name="contrasena"
+              placeholder="Contraseña"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <Link to="/forgot-password">¿Has olvidado tu contraseña?</Link>
+            <div className="container-button">
+              <button type="submit">Login</button>
+            </div>
+            </form>      
           </div>
         </div>
       </div>

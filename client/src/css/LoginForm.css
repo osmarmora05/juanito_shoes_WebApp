@@ -1,0 +1,124 @@
+/* Estilos CSS */
+.container {
+display: flex;
+height: 100vh;
+}
+
+.imagen-empresa {
+flex: 1;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-basis: 50%;
+}
+.imagen-empresa img{
+max-width: 100%;
+height: 100%;
+}
+
+.formulario-inner h2{
+    margin-bottom: 70px;
+}
+.formulario {
+flex: 1;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-basis: 50%;
+}
+.formulario h1{
+    position:absolute;
+    top: 0;
+    right: 0;
+}
+
+.container-caja {
+width: 90%; /* Cambié el ancho a un porcentaje para mantener el responsive */
+max-width: 600px; /* Añadí un ancho máximo para mantener la escala en dispositivos grandes */
+height: 600px;
+border: 3px solid black;
+background-color: #f9faf7;
+display: flex;
+justify-content: center;
+align-items: center; 
+}
+
+.formulario-inner {
+border: 2px solid #F9FAF7;
+padding: 20px;
+max-width: 90%; 
+width: 100%;
+box-sizing: border-box;
+text-align: center;
+align-items: center;
+}
+
+/* Estilos para inputs */
+input[type="text"],
+input[type="password"] {
+width: 100%;
+padding: 10px;
+margin-bottom: 15px; /* Espacio entre inputs */
+box-sizing: border-box;
+}
+
+.container-button {
+display: flex;
+justify-content: center;
+margin-top: 60px;
+}
+
+.container-button button {
+background-color: black;
+color: white;
+width: 100%;
+max-width: 200px; 
+height: 30px;
+}
+.imagen-empresa{
+    position:relative;
+
+}
+.capa-opaca{
+    position: absolute;
+    top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: black; /* Para hacer la capa visible */
+opacity: 0.2; 
+}
+
+a{
+    text-decoration: none;
+    color: black;
+
+}
+a:hover {
+    color: blue; 
+}
+
+
+.container-button button:hover {
+    background-color: darkgray; 
+    color: black; 
+}
+
+
+@media screen and (max-width: 768px) {
+.container {
+flex-direction: column;
+height: auto;
+}
+
+.imagen-empresa,
+.formulario {
+flex-basis: 100%;
+}
+
+.container-caja,
+.formulario-inner {
+width: 100%; 
+max-width: none; 
+}
+}
